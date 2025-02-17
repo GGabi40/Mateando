@@ -58,10 +58,7 @@ def create_db():
     db.create_all()
 
 
-""" VER DONDE PONER """
-
-""" Método de inicialización de nuestra BBDD """
-
+""" Método de inicialización de BBDD """
 
 def init_db():
     create_db()
@@ -78,9 +75,6 @@ def init_db():
     admin.set_password("123")
     db.session.add(admin)
     db.session.commit()
-
-
-"""  """
 
 
 # Rutas:
@@ -104,7 +98,7 @@ def dashboard():
     # Solo llega a esta línea si cumple con el atributo es_Admin
     return render_template("auth/dashboard.html", productos=productos, count= count, suma=suma)
 
-# ----
+
 
 @app.route('/miPerfil')
 @login_required
@@ -112,10 +106,7 @@ def mi_Perfil():
     return render_template('auth/miPerfil.html')
 
 
-""" MOSTRAR A GIULIANNO """
-
 """ Agregar un nuevo Usuario """
-
 
 @app.route('/addUsuario', methods=["POST"])
 def add_usuario() -> Response | str:
@@ -172,14 +163,9 @@ def add_producto() -> Response | str:
 
 
 
-# -------------------------------------------------------------------------------------
-# AGREGADO POR JUSTI
-
 #RUTAS DEL DASHBOARD
 
-# A TRAVÉS DE LOS BOTONES DEL DASHBOARD
 # Muestra una página para editar el producto y manda como parámetro el id del producto
-
 
 @app.route('/editProducto/<int:id_producto>', methods=["POST"])
 def editProducto(id_producto: int):
@@ -187,7 +173,6 @@ def editProducto(id_producto: int):
     return render_template("auth/editarProducto.html", producto=producto)
 
 # Modifica el producto seleccionado
-
 
 @app.route('/editarProducto/<int:id_producto>', methods=["POST"])
 def edit_producto(id_producto: int) -> Response | str:
@@ -201,8 +186,6 @@ def edit_producto(id_producto: int) -> Response | str:
 
     db.session.commit()
     return redirect(url_for("dashboard"))
-
-# A TRAVÉS DE LOS BOTONES DEL DASHBOARD
 
 
 @app.route('/eliminarProducto/<int:id_producto>', methods=["POST"])
@@ -415,7 +398,7 @@ def enviar_mensaje():
         mail.send(msg)
         print("Mensaje enviado con éxito")
     except Exception as e:
-        print(e)  # Para depuración en caso de error
+        print(e) 
         print("Hubo un error al enviar el mensaje")
 
     return redirect('/')  # Redirecciona a la página principal
@@ -426,8 +409,8 @@ def enviar_mensaje():
 def recuperarContrasenia():
     return render_template('/recuperarContrasenia.html')
 
-#Ruta para mandarle un mail al usuario con una contraseña temporal
 
+#Ruta para mandarle un mail al usuario con una contraseña temporal
 @app.route('/enviarContraseniaTemporal', methods=['GET','POST'])
 def enviar_contrasenia_temporal():
     email = request.form['email']
@@ -474,7 +457,7 @@ def enviar_contrasenia_temporal():
     return redirect(url_for('index'))
 
 
-#Actualiza los datos del usuario (current_user == FlaskLogin) segun lo ingresado en el form
+# Actualiza los datos del usuario (current_user == FlaskLogin) segun lo ingresado en el form
 @app.route('/updateProfile', methods=['GET','POST'])
 def updateProfile():
 
@@ -495,8 +478,6 @@ def deleteAccount():
 
     return redirect(url_for("index"))
 
-# FIN AGREGADO POR JUSTI
-# --------------------------------------------------------------------------------------
 
 #RUTAS BÁSICAS
 
@@ -590,8 +571,6 @@ def method_not_allowed(error):
 @app.errorhandler(500)
 def internal_server():
     return render_template('errors/error500.html')
-
-# ----
 
 
 if __name__ == '__main__':
