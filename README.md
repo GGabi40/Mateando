@@ -1,5 +1,7 @@
 # Mateando
 
+<img src="https://raw.githubusercontent.com/ggabi40/Mateando/main/src/static/assets/img/LOGO-footer.png" alt="Mateando Logo" width="200">
+
 ## Description
 
 This project is an **Online Store** developed from design to database, using **Flask**, **Python**, **HTML**, **CSS**, and **JavaScript**. It was created as part of a university programming assignment. The application provides a complete shopping experience with functionalities such as form validation, email sending when necessary, and a shopping cart system for users.
@@ -50,5 +52,3 @@ Follow these steps:
 - **User Dashboard**: Each registered user has a personal control panel where they can:
   - Update their account details, such as email and password.
   - Delete their account if they want to.
-
-<img src="https://raw.githubusercontent.com/ggabi40/Mateando/main/src/static/assets/img/LOGO-footer.png" alt="Mateando Logo" width="200">
